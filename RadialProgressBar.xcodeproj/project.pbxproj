@@ -11,6 +11,10 @@
 		3D2850182ABAE06F009505DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2850172ABAE06F009505DA /* ContentView.swift */; };
 		3D28501A2ABAE072009505DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D2850192ABAE072009505DA /* Assets.xcassets */; };
 		3D28501D2ABAE072009505DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D28501C2ABAE072009505DA /* Preview Assets.xcassets */; };
+		3D2850242ABAF92A009505DA /* CircularTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2850232ABAF92A009505DA /* CircularTimerView.swift */; };
+		3D9D7ABA2ABC0CAB002295D4 /* DeviceOrientationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D7AB92ABC0CAB002295D4 /* DeviceOrientationModifier.swift */; };
+		3D9D7ABC2ABC0D89002295D4 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D7ABB2ABC0D89002295D4 /* ClockView.swift */; };
+		3D9D7ABE2ABC11D2002295D4 /* ControlButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D7ABD2ABC11D2002295D4 /* ControlButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		3D2850172ABAE06F009505DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D2850192ABAE072009505DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D28501C2ABAE072009505DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3D2850232ABAF92A009505DA /* CircularTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTimerView.swift; sourceTree = "<group>"; };
+		3D9D7AB92ABC0CAB002295D4 /* DeviceOrientationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOrientationModifier.swift; sourceTree = "<group>"; };
+		3D9D7ABB2ABC0D89002295D4 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		3D9D7ABD2ABC11D2002295D4 /* ControlButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +59,14 @@
 		3D2850142ABAE06F009505DA /* RadialProgressBar */ = {
 			isa = PBXGroup;
 			children = (
+				3D9D7AB92ABC0CAB002295D4 /* DeviceOrientationModifier.swift */,
+				3D2850232ABAF92A009505DA /* CircularTimerView.swift */,
 				3D2850152ABAE06F009505DA /* RadialProgressBarApp.swift */,
 				3D2850172ABAE06F009505DA /* ContentView.swift */,
 				3D2850192ABAE072009505DA /* Assets.xcassets */,
 				3D28501B2ABAE072009505DA /* Preview Content */,
+				3D9D7ABB2ABC0D89002295D4 /* ClockView.swift */,
+				3D9D7ABD2ABC11D2002295D4 /* ControlButtonView.swift */,
 			);
 			path = RadialProgressBar;
 			sourceTree = "<group>";
@@ -138,6 +150,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D2850182ABAE06F009505DA /* ContentView.swift in Sources */,
+				3D9D7ABC2ABC0D89002295D4 /* ClockView.swift in Sources */,
+				3D9D7ABE2ABC11D2002295D4 /* ControlButtonView.swift in Sources */,
+				3D9D7ABA2ABC0CAB002295D4 /* DeviceOrientationModifier.swift in Sources */,
+				3D2850242ABAF92A009505DA /* CircularTimerView.swift in Sources */,
 				3D2850162ABAE06F009505DA /* RadialProgressBarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

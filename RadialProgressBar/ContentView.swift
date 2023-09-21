@@ -7,15 +7,66 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View  {
+    @State private var counter: Double = 60 
+    @State private var isStarted: Bool = false 
+    @State private var timer: Timer? = nil
+    @State private var circleBGColor: Color = .yellow.opacity(0.10)
+    @State private var orientation: UIDeviceOrientation = UIDevice.current.orientation
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack(alignment: .center) {
+                if orientation.isLandscape {
+                    HStack(alignment: .center) {
+                        ClockView(
+                            counter: $counter,
+                            circleBGColor: circleBGColor,
+                            isStarted: isStarted) {
+                                counter = 60
+                                isStarted = false
+                                timer?.invalidate()
+                            }
+                        ControlButtonView(isStarted: $isStarted) { _ in
+                            startCounter()
+                        }
+                    }
+                } else {
+                    VStack(alignment: .center) {
+                        ClockView(
+                            counter: $counter,
+                            circleBGColor: circleBGColor,
+                            isStarted: isStarted) {
+                                counter = 60
+                                isStarted = false
+                                timer?.invalidate()
+                            }
+                        ControlButtonView(isStarted: $isStarted) { _ in
+                            startCounter()
+                        }
+                    }
+                }
+            }
+            .detectDeviceOrientation($orientation)
+            .navigationTitle("Timer")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .padding()
+    }
+    
+    func startCounter() {
+       timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if isStarted {
+                if counter > 0 {
+                    counter -= 1
+                } else {
+                    isStarted = false
+                    timer.invalidate()
+                }
+            } else {
+                timer.invalidate()
+            }
+        }
+        
     }
 }
 
