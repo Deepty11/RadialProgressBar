@@ -23,8 +23,7 @@ struct ContentView: View  {
                             counter: $counter,
                             divider: divider,
                             isStarted: isStarted) {
-                                counter = 60
-                                isStarted = false
+                                resetTimer()
                                 timer?.invalidate()
                             }
                     
@@ -45,9 +44,7 @@ struct ContentView: View  {
                             counter: $counter,
                             divider: divider,
                             isStarted: isStarted) {
-                                counter = 60
-                                divider = 60
-                                isStarted = false
+                                resetTimer()
                                 timer?.invalidate()
                             }
                         ControlButtonView(
@@ -75,9 +72,7 @@ struct ContentView: View  {
                 if counter > 0 {
                     counter -= 1
                 } else {
-                    counter = 60
-                    divider = 60
-                    isStarted = false
+                    resetTimer()
                     timer.invalidate()
                 }
             } else {
@@ -85,6 +80,12 @@ struct ContentView: View  {
             }
         }
         
+    }
+    
+    func resetTimer() {
+        counter = 60
+        divider = 60
+        isStarted = false
     }
 }
 
