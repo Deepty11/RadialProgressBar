@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View  {
-    @State private var counter: Double = 60 
-    @State private var isStarted: Bool = false 
+    @State private var counter: Double = 60
+    @State private var divider: Double = 60
+    @State private var isStarted: Bool = false
     @State private var timer: Timer? = nil
-    @State private var circleBGColor: Color = .yellow.opacity(0.10)
     @State private var orientation: UIDeviceOrientation = UIDevice.current.orientation
     
     var body: some View {
@@ -21,29 +21,45 @@ struct ContentView: View  {
                     HStack(alignment: .center) {
                         ClockView(
                             counter: $counter,
-                            circleBGColor: circleBGColor,
+                            divider: divider,
                             isStarted: isStarted) {
                                 counter = 60
                                 isStarted = false
                                 timer?.invalidate()
                             }
-                        ControlButtonView(isStarted: $isStarted) { _ in
-                            startCounter()
-                        }
+                    
+                        ControlButtonView(
+                            isStarted: isStarted,
+                            onTappedControlButton: {
+                                isStarted.toggle()
+                                startCounter()
+                            }, 
+                            onTappedAdditionButton:  {
+                                counter += 60
+                                divider += 60
+                            })
                     }
                 } else {
                     VStack(alignment: .center) {
                         ClockView(
                             counter: $counter,
-                            circleBGColor: circleBGColor,
+                            divider: divider,
                             isStarted: isStarted) {
                                 counter = 60
+                                divider = 60
                                 isStarted = false
                                 timer?.invalidate()
                             }
-                        ControlButtonView(isStarted: $isStarted) { _ in
-                            startCounter()
-                        }
+                        ControlButtonView(
+                            isStarted: isStarted,
+                            onTappedControlButton: {
+                                isStarted.toggle()
+                                startCounter()
+                            },
+                            onTappedAdditionButton:  {
+                                counter += 60
+                                divider += 60
+                            })
                     }
                 }
             }
@@ -59,6 +75,8 @@ struct ContentView: View  {
                 if counter > 0 {
                     counter -= 1
                 } else {
+                    counter = 60
+                    divider = 60
                     isStarted = false
                     timer.invalidate()
                 }

@@ -7,26 +7,54 @@
 
 import SwiftUI
 
+enum ButtonType {
+    case timerAddition
+    case control
+}
+
 struct ControlButtonView: View {
-    @Binding var isStarted: Bool
-    var onTapped: ((Binding<Bool>) -> Void)? = nil
+    var isStarted: Bool
+    var onTappedControlButton: () -> Void
+    var onTappedAdditionButton: () -> Void
     
     var body: some View {
-        Button {
-            isStarted.toggle()
-            onTapped?($isStarted)
-        } label: {
-            Text(isStarted ? "Pause" : "Start")
-                .foregroundColor(.white)
-                .padding()
+        HStack {
+            // ADDITION
+            Button {
+                onTappedAdditionButton()
+            } label: {
+                Text("+ 1:00")
+                    .foregroundColor(.white)
+                    .padding()
+            }
+            .background(Color.cyan.opacity(0.8))
+            .cornerRadius(8)
+            
+            // CONTROL
+            Button {
+                onTappedControlButton()
+            } label: {
+                Text(isStarted ? "Pause" : "Start")
+                    .foregroundColor(.white)
+                    .padding()
+            }
+            .background(Color.red)
+            .cornerRadius(8)
         }
-        .background(Color.red)
-        .cornerRadius(8)
     }
 }
 
 struct ControlButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ControlButtonView(isStarted: .constant(false))
+        ControlButtonView(
+            isStarted: false,
+            onTappedControlButton: {
+                print("control button pressed")
+            },
+            onTappedAdditionButton: {
+                print("added")
+            })
+        .previewLayout(.sizeThatFits)
+        .padding()
     }
 }

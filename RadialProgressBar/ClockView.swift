@@ -9,11 +9,19 @@ import SwiftUI
 
 struct ClockView: View {
      @Binding var counter: Double
+    var divider: Double = 60
     
     var timerText: String {
-        counter == 60 ? "1:00" : "\(Int(counter))"
+        let min: Int = Int(counter / 60)
+        let sec: Int = Int(counter.truncatingRemainder(dividingBy: 60))
+        
+        if min < 1 {
+            return "\(Int(counter))"
+        }
+        
+        return "\(min):\(sec >= 10 ? "\(sec)" : "0\(sec)")"
     }
-    var circleBGColor: Color = .accentColor
+    var circleBGColor: Color = .yellow.opacity(0.10)
     var isStarted: Bool = false {
         didSet {
             if isStarted == true && counter == 0 {
@@ -27,7 +35,7 @@ struct ClockView: View {
     var body: some View {
         ZStack {
             CircularTimerView(
-                progress: counter/60,
+                progress: counter / divider,
                 backgroundColor: circleBGColor)
             Text("\(timerText)")
                 .font(.system(size: 50)).bold()
